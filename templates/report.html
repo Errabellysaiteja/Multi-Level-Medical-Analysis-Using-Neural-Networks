@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      h2 {
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+      h3 {
+        color: #555;
+        margin-bottom: 5px;
+      }
+      .lobe-section {
+        margin-bottom: 30px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .back-link {
+        display: block;
+        width: fit-content;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Detailed Report</h1>
+
+      {% for region, info in report_data.items() %}
+      <div class="lobe-section">
+        <h2>{{ region }}</h2>
+
+        <h3>Disadvantages:</h3>
+        {% if info['disadvantages'] %}
+        <ul>
+          {% for disadvantage in info['disadvantages'] %}
+          <li>{{ disadvantage }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No disadvantages information available.</p>
+        {% endif %}
+
+        <h3>Functionalities:</h3>
+        {% if info['functionalities'] %}
+        <ul>
+          {% for functionality in info['functionalities'] %}
+          <li>{{ functionality }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No functionalities information available.</p>
+        {% endif %}
+
+        <h3>Doctor Tips:</h3>
+        {% if info['doctor_tips'] %}
+        <ul>
+          {% for tip in info['doctor_tips'] %}
+          <li>{{ tip }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No doctor tips available.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <!-- Back to the upload page link -->
+      <a href="/" class="back-link">Back to Upload Page</a>
+    </div>
+  </body>
+</html>
